@@ -8,6 +8,8 @@ import {Description, Dialog, DialogPanel, DialogTitle} from "@headlessui/react";
 import {
     ArrowDownTrayIcon
 } from "@heroicons/react/24/solid";
+import logo from '../public/logo.svg';
+
 
 const App: React.FC = () => {
     const [markdown, setMarkdown] = useState<string>(`# John Doe
@@ -27,8 +29,9 @@ const App: React.FC = () => {
 
     return (
         <div className="app-container">
-            <h1 className="title">DotMD</h1>
-
+            <div className="logo">
+                <img src={logo} alt="logo" />
+            </div>
             <div className="content-area">
                 <div className="editor-container">
                     <MDEditor value={markdown} onChange={(val) => setMarkdown(val ?? '')} preview="edit" height="100%" />
@@ -55,7 +58,6 @@ const App: React.FC = () => {
                     <DialogTitle className="dialog-title">Instructions</DialogTitle>
                     <Description>
                         Write your resume in Markdown format on the left editor. Preview appears on the right.
-                        Write your resume in Markdown format on the right editor. Preview appears on the left.
                     </Description>
                     <button className="btn-close" onClick={() => setIsModalOpen(false)}>Close</button>
                 </DialogPanel>

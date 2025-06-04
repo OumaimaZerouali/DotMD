@@ -14,11 +14,14 @@ html, body, #root {
   box-sizing: border-box;
 }
 
-.title {
-  text-align: center;
-  color: #333;
-  margin-bottom: 20px;
-  font-size: 2em;
+.logo {
+  display: flex;
+  justify-content: center;
+
+  img {
+    height: 100px;
+    width: 200px;
+  }
 }
 
 .content-area {
@@ -176,5 +179,63 @@ html, body, #root {
 
   .title {
     font-size: 1.5em;
+  }
+}
+
+/* --- PRINT-SPECIFIC STYLES --- */
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+  }
+
+  .app-container {
+    padding: 0;
+    height: auto;
+  }
+
+  .title {
+    font-size: 1.5em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .content-area {
+    flex-direction: column;
+    gap: 0;
+    flex-grow: unset;
+  }
+
+  .editor-container, .button-column {
+    display: none;
+  }
+
+  .preview-container {
+    flex: none;
+    height: auto;
+    max-height: unset;
+    overflow: visible;
+    border: none;
+    box-shadow: none;
+    padding: 20px;
+    background-color: #fff;
+  }
+
+  .preview-container .wmde-markdown-preview {
+    height: auto;
+    overflow: visible;
+    flex-grow: unset;
+    padding: 0;
+  }
+
+  .preview-container .wmde-markdown-preview p,
+  .preview-container .wmde-markdown-preview li {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  .dialog, .dialog-backdrop, .dialog-panel {
+    display: none !important;
   }
 }
